@@ -15,7 +15,30 @@ command:
 
 `pear install Text_Highlighter-beta`
 
+Supported Coding Languages
+--------------------------
+
+Syntax for the following languages are currently supported:
+
++ ABAP
++ AVRC
++ CPP
++ CSS
++ DIFF
++ DTD
++ HTML
++ JAVA
++ JAVASCRIPT
++ MYSQL
++ PERL
++ PHP
++ PYTHON
++ SH
++ SQL
++ VBSCRIPT
++ XML
+
 Marking Code for Syntax Highlight
 ---------------------------------
 
-Blah blah
+The following code languages ar

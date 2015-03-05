@@ -9,7 +9,7 @@ class anetSyntaxHighlight {
 
   private $dom;
   private $hlight = FALSE;
-  private $THL_LANGS = array('ABAP', 'CPP', 'CSS', 'DIFF', 'DTD', 'HTML', 'JAVA', 'JAVASCRIPT', 'MYSQL', 'PERL', 'PHP', 'PYTHON', 'RUBY', 'SQL', 'XML');
+  private $THL_LANGS = array('ABAP', 'AVRC', 'CPP', 'CSS', 'DIFF', 'DTD', 'HTML', 'JAVA', 'JAVASCRIPT', 'MYSQL', 'PERL', 'PHP', 'PYTHON', 'RUBY', 'SH', 'SQL', 'VBSCRIPT', 'XML');
   
   private function codeString($code,$lang='TXT',$oneline=false) {
    $lang = strtoupper($lang);
