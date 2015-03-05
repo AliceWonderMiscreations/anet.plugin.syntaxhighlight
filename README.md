@@ -41,4 +41,19 @@ Syntax for the following languages are currently supported:
 Marking Code for Syntax Highlight
 ---------------------------------
 
-The following code languages ar
+To invoke syntax highlighting in the language of your code, indicate the
+language of the code with the `data-code` code attribute in the `<pre>` block.
+
+For example:
+
+    <pre data-code="sh">
+    #!/bin/bash
+    echo "Hello World"
+    sleep 5
+    echo "Goodbye"
+    exit
+    </pre>
+    
+The plugin will trigger off of the `data-code` attribute, invoke `SH` for the
+syntax highlight rules, and add the appropriate markup inside the `<pre>`
+block.
