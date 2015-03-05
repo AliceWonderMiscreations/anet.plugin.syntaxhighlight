@@ -57,3 +57,25 @@ For example:
 The plugin will trigger off of the `data-code` attribute, invoke `SH` for the
 syntax highlight rules, and add the appropriate markup inside the `<pre>`
 block.
+
+Additional Features
+-------------------
+
+Code that is rendered in HTML can sometimes be a royal pain in the arse to copy
+into the clipboard.
+
+This plugin includes JavaScript that will create an HTML button to make things
+easier for those who wish to copy the code into the clipboard.
+
+When the button is pushed, the code is stripped of its color syntax and is
+placed inside a `textarea` element as plain text. The entire block is selected
+for the user, so all the user has to do is copy it.
+
+When the button is clicked again, the original syntax highlighting is restored.
+
+Known Issues
+------------
+
+### PHP
+
+foo
