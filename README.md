@@ -114,3 +114,11 @@ altering the format of anything inside a `<pre>` block for XHTML documents.
 There may be a workaround that works, but for the present, this plugin will
 unfortunately turn off the `formatOutput` option on the DOMDocument object that
 AliceNet uses to construct the XHTML sent to the web browsers.
+
+WAIG 2.0 Accessibility
+----------------------
+
+The user interface buttons associated with this plugin probably do not meet the
+WAIG 2.0 Accessibility guidelines.
+
+I need to research how to do it in a way so that they do.
