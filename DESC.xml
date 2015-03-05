@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+  <vendor code="anet">Alice Wonder Miscreations</vendor>
+  <type>plugin</type>
+  <name>syntaxhighlight</name>
+  <license>MIT</license>
+  <description>Provides syntax highlighting for code in an html pre block.</description>
+  <homepage>https://github.com/AliceWonderMiscreations/anet.plugin.syntaxhighlight</homepage>
+  <git>
+    <branch>master</branch>
+    <clone>https://github.com/AliceWonderMiscreations/anet.plugin.syntaxhighlight.git</clone>
+  </git>
+  <script type="post">anet.syntaxhighlight.php</script>
+</plugin>
