@@ -78,4 +78,39 @@ Known Issues
 
 ### PHP
 
-foo
+It seems that for PHP code snippets, the `Text_Highlighter` class used by this
+plugin requires the starting `<?php` and closing `?>` in order to properly
+apply the syntax highlighting.
+
+### Text_Highlighter
+
+There is currently not a PEAR maintainer for the Text_Highlighter module. It is
+possible that an upgrade to PHP could break the class, and there might not be
+someone to fix it.
+
+I *suspect* that it will continue to work through all updates of the PHP 5.6.x
+series but it is impossible for me to speculate beyond that.
+
+### XML_Parser
+
+The `Text_Highlighter` modules uses the PEAR `XML_Parser` module, which has
+depricated.
+
+It needs to be ported to use `XML_Parser2` instead. I am looking into it, if it
+is simple enough of a task, I may port it and provide a patch to the PEAR QA
+team which *may* then merge the patch into the source even though there is not
+currently a maintainer.
+
+That may give the module a longer life until a new maintainer can be found.
+
+### DOMDocument formatOutput
+
+If the DOMDocument object has output formatting turned on, the display of some
+code blocks is broken.
+
+I believe this is a bug in either libxml2 or in DOMDocument, it should not be
+altering the format of anything inside a `<pre>` block for XHTML documents.
+
+There may be a workaround that works, but for the present, this plugin will
+unfortunately turn off the `formatOutput` option on the DOMDocument object that
+AliceNet uses to construct the XHTML sent to the web browsers.
