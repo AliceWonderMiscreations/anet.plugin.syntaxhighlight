@@ -1,9 +1,4 @@
 <?php
-/*
-WARNING: "pear/XML_Parser" is deprecated in favor of "pear/XML_Parser2"
-WARNING: "pear/Console_Getopt" is deprecated in favor of "pear/Console_GetoptPlus"
-*/
-
 
 class anetSyntaxHighlight {
 
