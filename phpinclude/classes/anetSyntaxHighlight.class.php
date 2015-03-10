@@ -8,10 +8,10 @@ WARNING: "pear/Console_Getopt" is deprecated in favor of "pear/Console_GetoptPlu
 class anetSyntaxHighlight {
 
   private $dom;
-  private $hlight = FALSE;
+  private $hlight = FALSE; //default to no syntax highlight in case PEAR module not available
   private $THL_LANGS = array('ABAP', 'AVRC', 'CPP', 'CSS', 'DIFF', 'DTD', 'HTML', 'JAVA', 'JAVASCRIPT', 'MYSQL', 'PERL', 'PHP', 'PYTHON', 'RUBY', 'SH', 'SQL', 'VBSCRIPT', 'XML');
   
-  private function codeString($code,$lang='TXT',$oneline=false) {
+  private function codeString($code,$lang='TXT') {
    $lang = strtoupper($lang);
    if(strcmp($lang, 'JS') == 0) {
      $lang = 'JAVASCRIPT';
@@ -26,7 +26,7 @@ class anetSyntaxHighlight {
       $divList = $tmpDOM->getElementsByTagName('div');
       $impDIV = $divList->item(0);
       $node = $this->dom->importNode($impDIV,true);
-      } else {
+    } else {
       $node = $this->dom->createElement('div');
       $node->setAttribute('class','mono');
       $pre = $this->dom->createElement('pre',$code);
@@ -37,20 +37,14 @@ class anetSyntaxHighlight {
    
    public function highlight ($pre) {
      if(! $this->hlight) {
-       return TRUE;
+       return FALSE;
      }
      if ($pre->hasAttribute('data-code')) {
-       $oneline = FALSE;
        $lang = $pre->getAttribute('data-code');
        $code = trim($pre->nodeValue);
-       $foo = split('\n', $code);
-       $n=count($foo);
-       if ($n == 1) {
-         $oneline = TRUE;
-       }
        $s  = array('/\&lt;/','/\&gt;/'); $r = array('<','>');
        $code = preg_replace($s, $r, $code);
-       $newPre = $this->codeString($code, $lang, $oneline);
+       $newPre = $this->codeString($code, $lang);
        $genPre = $newPre->getElementsByTagName('pre')->item(0);
        $genPre->setAttribute('data-code', $lang);
        $pre->parentNode->replaceChild($newPre, $pre);
