@@ -6,9 +6,10 @@ class anetSyntaxHighlight {
   private $hlight = FALSE; //default to no syntax highlight in case PEAR module not available
   private $THL_LANGS = array('ABAP', 'AVRC', 'CPP', 'CSS', 'DIFF', 'DTD', 'HTML', 'JAVA', 'JAVASCRIPT', 'MYSQL', 'PERL', 'PHP', 'PYTHON', 'RUBY', 'SH', 'SQL', 'VBSCRIPT', 'XML');
   
-  private function codeString($code,$lang='TXT') {
+  /* applies syntax highlight to code string */
+  private function codeString($code, $lang='TXT') {
    $lang = strtoupper($lang);
-   if(strcmp($lang, 'JS') == 0) {
+   if (strcmp($lang, 'JS') == 0) {
      $lang = 'JAVASCRIPT';
    }
    if (in_array($lang,$this->THL_LANGS)) {
@@ -20,24 +21,26 @@ class anetSyntaxHighlight {
       $tmpDOM->loadXML($out);
       $divList = $tmpDOM->getElementsByTagName('div');
       $impDIV = $divList->item(0);
-      $node = $this->dom->importNode($impDIV,true);
+      $node = $this->dom->importNode($impDIV, true);
     } else {
       $node = $this->dom->createElement('div');
       $node->setAttribute('class','mono');
-      $pre = $this->dom->createElement('pre',$code);
+      $pre = $this->dom->createElement('pre', $code);
       $node->appendChild($pre);
       }
    return($node);
    }
    
+   /* returns false if pear module not available
+      otherwise swaps original pre node with syntax highlight */
    public function highlight ($pre) {
-     if(! $this->hlight) {
+     if (! $this->hlight) {
        return FALSE;
      }
      if ($pre->hasAttribute('data-code')) {
        $lang = $pre->getAttribute('data-code');
        $code = trim($pre->nodeValue);
-       $s  = array('/\&lt;/','/\&gt;/'); $r = array('<','>');
+       $s = array('/\&lt;/','/\&gt;/'); $r = array('<','>'); //note - test with &amp; &quot; &apos;
        $code = preg_replace($s, $r, $code);
        $newPre = $this->codeString($code, $lang);
        $genPre = $newPre->getElementsByTagName('pre')->item(0);
@@ -46,6 +49,7 @@ class anetSyntaxHighlight {
      }
    }
 
+  /* constructor - $dom is DOMDocument object */
   public function anetSyntaxHighlight($dom) {
     $this->dom = $dom;
     if (class_exists('Text_Highlighter')) {
