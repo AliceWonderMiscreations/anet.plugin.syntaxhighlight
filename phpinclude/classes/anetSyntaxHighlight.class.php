@@ -12,7 +12,7 @@ class anetSyntaxHighlight {
    if (strcmp($lang, 'JS') == 0) {
      $lang = 'JAVASCRIPT';
    }
-   if (in_array($lang,$this->THL_LANGS)) {
+   if (in_array($lang, $this->THL_LANGS)) {
       //$dom->formatOutput = false;
       $hl =& Text_Highlighter::factory($lang);
       $out = $hl->highlight($code);
